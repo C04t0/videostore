@@ -3,7 +3,6 @@
     declare(strict_types = 1);
 
     namespace Business;
-    spl_autoload_register();
 
     use Data\DvdDAO;
     use Data\MovieDAO;
@@ -37,5 +36,9 @@
             }
 
             return $available;
+        }
+        public function addMovie(string $title) : void {
+            global $movieDAO;
+            $movieDAO->addMovie($title);
         }
     }

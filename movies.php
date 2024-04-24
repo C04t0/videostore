@@ -13,7 +13,7 @@
                 include "Presentation/showAllMovies.php";
                 break;
             case "addMovie":
-                include "Presentation/addMovie.php";
+                include "addMovieTitle.php";
                 break;
             case "findMovie":
                 include "Presentation/findMovie.php";

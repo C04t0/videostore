@@ -3,6 +3,7 @@
     declare(strict_types=1);
 
     namespace Data;
+
     use PDO;
     use Entities\Movie;
     use Exceptions\MovieExistsException;
@@ -12,8 +13,8 @@
     class MovieDAO {
 
         public function getAll() : ?array {
-            $list = array();
             global $dbConn;
+            $list = array();
             $sql = 'select id, title from movies order by title';
             $dbh = $dbConn->connect();
 
@@ -56,7 +57,7 @@
 
             return $movie;
         }
-        public function removeMovie(string $title) : bool {
+        public function removeMovie(string $title) : void {
             global $dbConn;
             $movie = $this->getMovieByTitle($title);
             $dvdDAO = new DvdDAO();
@@ -71,12 +72,8 @@
             $dvdDAO->deleteDvdsByMovieId($movie->getId());
             $dbh = null;
 
-            if (is_null($this->getMovieByTitle($title))) {
-                return true;
-            }
-            return false;
         }
-        public function addMovie(string $title) : bool {
+        public function addMovie(string $title) : void {
             global $dbConn;
 
             if (!is_null($this->getMovieByTitle($title))) {
@@ -90,9 +87,5 @@
             $statement->execute();
             $dbh = null;
 
-            if (is_null($this->getMovieByTitle($title))) {
-                return false;
-            }
-            return true;
         }
     }

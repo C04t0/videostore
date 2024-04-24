@@ -1,6 +1,7 @@
 {
     "require": {
-        "composer": "*"
+        "composer": "*",
+      "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {

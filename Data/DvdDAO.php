@@ -3,6 +3,7 @@
     declare(strict_types=1);
 
     namespace Data;
+
     use PDO;
     use Entities\Dvd;
     use Exceptions\DvdExistsException;
