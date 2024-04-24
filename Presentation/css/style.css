@@ -1,0 +1,28 @@
+/* ** DEBUG & DEVELOP ** */
+
+div, section, article, nav, img, header, footer, ul, li {
+    outline: 1px dashed red;
+}
+
+
+html, body, div, section, article, aside, nav, header, footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* ** TYPOGRAPHICS ** */
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+/* ** COLOURS ** */
+body {
+    color: whitesmoke;
+    background-color: black;
+}
+
+#error {
+    color: red;
+}
+
+/* ** STRUCTURE ** */
