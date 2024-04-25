@@ -1,7 +1,5 @@
 <?php
     declare(strict_types=1);
-
-    $movieService = new Business\MovieService();
 ?>
 
 <!DOCTYPE html>
@@ -14,36 +12,41 @@
     </head>
     <body>
         <div id="wrapper" class="container">
-            <h1>Movies</h1>
+            <h1>All movies</h1>
             <table>
                 <tr>
                     <th>Title</th>
                     <th>Dvd numbers</th>
-                    <th>Available copies</th>
+                    <th>Available</th>
                 </tr>
+                <?php foreach ($movieList as $movie) {
+                    $available = 0;
+                   ?>
                 <tr>
+                    <td><?php echo $movie->getTitle()?></td>
                     <td>
-                        <?php foreach ($movieList as $movie) {
-                            $movie->getTitle();
-                            ?>
-                    </td>
-                    <td>
-                        <?php
-                            $dvdList = $movieService->getDvdsByMovieId($movie->getId());
-                            foreach ($dvdList as $dvd) {
+                    <?php
+                        foreach ($dvdList as $dvd) {
+                            if ($dvd->getMovieId() == $movie->getId()) {
                                 if (!$dvd->isRented()) {
-                                    echo '<b>' . $dvd->getTitle() . '</b>';
+                                    $available++;
+                                    echo "<b> " . $dvd->getId() . " </b>";
                                 } else {
-                                    $dvd->getId();
+                                    echo $dvd->getId();
                                 }
                             }
                         }
                         ?>
                     </td>
                     <td>
-                        <?php $movieService->getAvailableCopies(); ?>
+                        <?php
+                            echo $available;
+                        ?>
                     </td>
                 </tr>
+                <?php
+                }
+                ?>
             </table>
         </div>
     </body>

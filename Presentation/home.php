@@ -1,7 +1,5 @@
 <?php
-declare(strict_types=1);
-namespace Presentation;
-spl_autoload_register()
+    declare(strict_types=1);
 ?>
 
 <!DOCTYPE HTML>
@@ -20,9 +18,9 @@ spl_autoload_register()
             </section>
             <section id="middleContent" class="middle">
                 <span id="btnSpan" class="btnContainer">
-                    <button onclick="location.href='../movies.php?action=showAllMovies'">Show all movies</button>
+                    <button onclick="location.href='../movies.php?action=showAll'">Show all movies</button>
                     <button onclick="location.href='../movies.php?action=addMovie'">Add a new movie</button>
-                    <button onclick="location.href='../movies.php?action=findMovie'">Find a movie</button>
+                    <button onclick="location.href='../movies.php?action=findDvd'">Find a movie</button>
                     <button onclick="location.href='../movies.php?action=addDvd'">Add a new dvd</button>
                     <button onclick="location.href='../movies.php?action=deleteMovie'">Delete a movie</button>
                     <button onclick="location.href='../movies.php?action=deleteDvd'">Delete a dvd</button>

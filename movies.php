@@ -1,4 +1,5 @@
 <?php
+
     declare(strict_types=1);
     spl_autoload_register();
 
@@ -8,33 +9,10 @@
 
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
-            case "showAllMovies":
+            case 'showAll':
                 $movieList = $movieService->getAllMovies();
+                $dvdList = $movieService->getAllDvds();
                 include "Presentation/showAllMovies.php";
-                break;
-            case "addMovie":
-                include "addMovieTitle.php";
-                break;
-            case "findMovie":
-                include "Presentation/findMovie.php";
-                break;
-            case "addDvd":
-                include "Presentation/addDvd.php";
-                break;
-            case "deleteMovie":
-                include "Presentation/deleteMovie.php";
-                break;
-            case "deleteDvd":
-                include "Presentation/deleteDvd.php";
-                break;
-            case "rentDvd":
-                include "Presentation/rentDvd.php";
-                break;
-            case "returnDvd":
-                include "Presentation/returnDvd.php";
-                break;
-            default:
-                include "Presentation/home.php";
                 break;
         }
     } else {

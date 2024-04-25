@@ -5,19 +5,26 @@
 
     class Dvd {
         private int $id;
-        private Movie $movie ;
+        private int $movieId;
         private bool $rented;
+        private static array $idMap = array();
 
-        public function __construct(int $id, Movie $movie, bool $rented) {
+        private function __construct(int $id, int $movieId, bool $rented) {
             $this->id = $id;
-            $this->movie = $movie;
+            $this->movieId = $movieId;
             $this->rented = $rented;
+        }
+        public static function create(int $id, int $movieId, bool $rented): Dvd {
+            if (!isset(self::$idMap[$id])) {
+                self::$idMap[$id] = new self($id, $movieId, $rented);
+            }
+            return self::$idMap[$id];
         }
         public function getId(): int {
             return $this->id;
         }
-        public function getMovie(): Movie {
-            return $this->movie;
+        public function getMovieId() : int {
+            return $this->movieId;
         }
         public function isRented(): bool {
             return $this->rented;
@@ -28,7 +35,7 @@
         public function setRented(bool $rented) : void {
             $this->rented = $rented;
         }
-        public function setMovie(Movie $movie) : void {
-            $this->movie = $movie;
+        public function setMovie(int $movieId) : void {
+            $this->movieId = $movieId;
         }
     }
