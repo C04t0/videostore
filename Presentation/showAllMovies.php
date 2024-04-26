@@ -7,8 +7,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Movies</title>
-        <link rel="stylesheet" href="css/style.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
         <link rel="icon" href="img/icon.png">
+        <style><?php require_once "css/style.css"?></style> <!-- avoid mime-type error -->
     </head>
     <body>
         <div id="wrapper" class="container">

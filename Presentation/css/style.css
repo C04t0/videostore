@@ -21,10 +21,10 @@ body {
     background-color: black;
 }
 
-#error {
+.error {
     color: red;
 }
-#success {
+.success {
     color: green;
 }
 

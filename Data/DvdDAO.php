@@ -2,7 +2,9 @@
     declare(strict_types=1);
 
     namespace Data;
+    use PDO;
     use Entities\Dvd;
+    use Exceptions\DvdExistsException;
 
     spl_autoload_register();
     $dbConn = new DbConnection();
@@ -25,5 +27,36 @@
 
             return $list;
         }
+        public function getById(int $id) : ?Dvd {
+            global $dbConn;
+            $sql = 'select id, movie_id, rented from dvds where id = :id';
+            $dbh = $dbConn->connect();
 
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $dbh = null;
+
+            if (empty($row)) {
+                return null;
+            } else {
+                return DVD::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
+            }
+        }
+        public function createDvd(int $id, int $movieId) : void {
+            if (!is_null($this->getById($id))) {
+                throw new DvdExistsException();
+            }
+            global $dbConn;
+            $sql = 'insert into dvds (id, movie_id, rented) values (:id, :movie_id, false)';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':movie_id', $movieId, PDO::PARAM_INT);
+            $statement->execute();
+
+            $dbh = null;
+        }
     }
