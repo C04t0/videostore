@@ -29,13 +29,13 @@
             global $dvdDAO;
             return $dvdDAO->getById($id);
         }
-        public function addMovie(string $title) : void {
+        public function addMovie(string $title) : bool {
             global $movieDAO;
-            $movieDAO->createMovie($title);
+            return $movieDAO->createMovie($title);
         }
-        public function addDvd(int $id, int $movieId) : void {
+        public function addDvd(int $id, int $movieId) : bool {
             global $dvdDAO;
-            $dvdDAO->createDvd($id, $movieId);
+            return $dvdDAO->createDvd($id, $movieId);
         }
         public function deleteMovie(int $id) : void {
             global $movieDAO;
@@ -44,5 +44,13 @@
         public function deleteDvd(int $id) : void {
             global $dvdDAO;
             $dvdDAO->deleteById($id);
+        }
+        public function rentDvd($id) {
+            global $dvdDAO;
+            $dvdDAO->rentDvd($id);
+        }
+        public function returnDvd($id) {
+            global $dvdDAO;
+            $dvdDAO->returnDvd($id);
         }
     }

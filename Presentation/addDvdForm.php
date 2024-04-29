@@ -1,7 +1,3 @@
-<?php
-    declare(strict_types=1);
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,14 +10,12 @@
         <div id="wrapper" class="container">
             <h1>Add a new dvd</h1>
             <?php
-                if (isset($_GET['error']) && ($_GET['error'] == "dvdIdExists")) {
+                if ($error === "dvdIdExists") {
                     ?>
                     <p class="error">A dvd with this id already exists!</p>
                     <?php
                 }
-            ?>
-            <?php
-                if (isset($_GET['success']) && ($_GET['success'] == "true")) {
+                if ($success) {
                     ?>
                     <p class="success">Dvd successfully added!</p>
                     <?php

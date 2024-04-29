@@ -19,14 +19,14 @@
             </section>
             <section id="middleContent" class="middle">
                 <span id="btnSpan" class="btnContainer">
-                    <button onclick="location.href='../movies.php?action=showAll'">Show all movies</button>
-                    <button onclick="location.href='../movies.php?action=addMovie'">Add a new movie</button>
-                    <button onclick="location.href='../movies.php?action=findDvd'">Find a dvd</button>
-                    <button onclick="location.href='../movies.php?action=addDvd'">Add a new dvd</button>
-                    <button onclick="location.href='../movies.php?action=deleteMovie'">Delete a movie</button>
-                    <button onclick="location.href='../movies.php?action=deleteDvd'">Delete a dvd</button>
-                    <button onclick="location.href='../movies.php?action=rentDvd'">Rent a dvd</button>
-                    <button onclick="location.href='../movies.php?action=returnDvd'">Return a dvd</button>
+                    <button onclick="location.href='movies.php?action=showAll'">Show all movies</button>
+                    <button onclick="location.href='movies.php?action=addMovie'">Add a new movie</button>
+                    <button onclick="location.href='movies.php?action=findDvd'">Find a dvd</button>
+                    <button onclick="location.href='movies.php?action=addDvd'">Add a new dvd</button>
+                    <button onclick="location.href='movies.php?action=deleteMovie'">Delete a movie</button>
+                    <button onclick="location.href='movies.php?action=deleteDvd'">Delete a dvd</button>
+                    <button onclick="location.href='movies.php?action=rentDvd'">Rent a dvd</button>
+                    <button onclick="location.href='movies.php?action=returnDvd'">Return a dvd</button>
                 </span>
             </section>
         </div>

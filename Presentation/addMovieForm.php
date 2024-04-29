@@ -1,7 +1,3 @@
-<?php
-    declare(strict_types=1);
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,15 +10,13 @@
         <div id="wrapper" class="container">
             <h1>Add a new movie title</h1>
             <?php
-                if (isset($_GET['error']) && ($_GET['error'] == 'movieExists')) {
+                if ($error === 'movieExists') {
                     ?>
             <p class="error">Title already exists!</p>
             <?php
                 }
+                if ($success) {
             ?>
-            <?php
-                if (isset($_GET['success']) && ($_GET['success'] == 'true')) {
-                    ?>
             <p class="success">Movie title successfully added!</p>
             <?php
                 }

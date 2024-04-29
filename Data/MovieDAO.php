@@ -2,6 +2,7 @@
     declare(strict_types=1);
 
     namespace Data;
+    use Exceptions\MovieNotFoundException;
     use PDO;
     use Entities\Movie;
     use Exceptions\MovieExistsException;
@@ -62,7 +63,7 @@
                 return $movie;
             }
         }
-        public function createMovie(string $title) : void {
+        public function createMovie(string $title) : bool {
             if (!is_null($this->getByTitle($title))) {
                 throw new MovieExistsException();
             }
@@ -75,16 +76,23 @@
             $statement->execute();
 
             $dbh = null;
+
+            return true;
         }
-        public function deleteById(int $id) : void {
+        public function deleteMovieByTitle(string $title) : bool {
+            if (is_null($this->getByTitle($title))) {
+                throw new MovieNotFoundException();
+            }
             global $dbConn;
-            $sql = 'delete from movies WHERE id = :id';
+            $sql = 'delete from movies WHERE title = :title';
             $dbh = $dbConn->connect();
 
             $statement = $dbh->prepare($sql);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':title', $title);
             $statement->execute();
 
             $dbh = null;
+
+            return true;
         }
     }

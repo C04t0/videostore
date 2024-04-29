@@ -6,15 +6,20 @@
     use Business\MovieService;
     use Exceptions\DvdExistsException;
 
+    $error = null;
+    $success = false;
     $movieService = new MovieService();
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
         try {
-            $movieService->addDvd($_POST['dvdId'], $_POST['movieId']);
-            header("Location: /Presentation/addDvdForm.php?success=true");
+            $success = $movieService->addDvd($_POST['dvdId'], $_POST['movieId']);
+            include "Presentation/addDvdForm.php";
+            /* header("Location: /Presentation/addDvdForm.php?success=true"); */
             exit(0);
         } catch (DvdExistsException $e) {
-            header("Location: /Presentation/addDvdForm.php?error=dvdIdExists");
+            $error = "dvdIdExists";
+            include "Presentation/addDvdForm.php";
+            /* header("Location: /Presentation/addDvdForm.php?error=dvdIdExists"); */
             exit(0);
         }
     } else {

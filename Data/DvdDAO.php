@@ -5,6 +5,7 @@
     use PDO;
     use Entities\Dvd;
     use Exceptions\DvdExistsException;
+    use Exceptions\DvdNotFoundException;
 
     spl_autoload_register();
     $dbConn = new DbConnection();
@@ -44,7 +45,7 @@
                 return DVD::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
             }
         }
-        public function createDvd(int $id, int $movieId) : void {
+        public function createDvd(int $id, int $movieId) : bool {
             if (!is_null($this->getById($id))) {
                 throw new DvdExistsException();
             }
@@ -58,10 +59,39 @@
             $statement->execute();
 
             $dbh = null;
+
+            return true;
         }
-        public function deleteById(int $id) : void {
+        public function deleteById(int $id) : bool {
+            if (is_null($this->getById($id))) {
+                throw new DvdNotFoundException();
+            }
             global $dbConn;
             $sql = 'delete from dvds where id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $dbh = null;
+
+            return true;
+        }
+        public function rentDvd(int $id) : void {
+            global $dbConn;
+            $sql = 'update dvds set rented = true where id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $dbh = null;
+        }
+        public function returnDvd(int $id) : void {
+            global $dbConn;
+            $sql = 'update dvds set rented = false where id = :id';
             $dbh = $dbConn->connect();
 
             $statement = $dbh->prepare($sql);

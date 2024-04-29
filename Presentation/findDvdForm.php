@@ -1,7 +1,3 @@
-<?php
-    declare(strict_types=1);
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +15,7 @@
                             <td>Select a dvd id</td>
                         </tr>
                         <tr>
-                            <select id="dvdIdSelect" name="idSelect">
+                            <select id="dvdIdSelect" name="idSelect" required>
                                 <?php
                                     foreach ($dvdList as $dvd) {
                                     ?>
