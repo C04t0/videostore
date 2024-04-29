@@ -13,7 +13,7 @@
     <body>
         <div id="wrapper" class="container">
             <h1>Find a dvd</h1>
-                <form method="post" action="/findDvd.php?action=process">
+                <form method="post" action="../findDvd.php?action=process">
                     <table>
                         <tr>
                             <td>Select a dvd id</td>

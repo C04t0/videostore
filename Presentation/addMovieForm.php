@@ -27,11 +27,11 @@
             <?php
                 }
             ?>
-            <form method="post" action="/addMovie.php?action=process">
+            <form method="post" action="../addMovie.php?action=process">
                 <table>
                     <tr>
                         <td>Movie title: </td>
-                        <td><input type="text" name="title"></td>
+                        <td><input type="text" name="title" required></td>
                     </tr>
                     <tr>
                         <td></td>

@@ -59,4 +59,15 @@
 
             $dbh = null;
         }
+        public function deleteById(int $id) : void {
+            global $dbConn;
+            $sql = 'delete from dvds where id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $dbh = null;
+        }
     }

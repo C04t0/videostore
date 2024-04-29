@@ -23,7 +23,7 @@
         }
         public function getMovie(int $id): ?Movie {
             global $movieDAO;
-            return $movieDAO->getById();
+            return $movieDAO->getById($id);
         }
         public function getDvd(int $id) : ?Dvd {
             global $dvdDAO;
@@ -36,5 +36,13 @@
         public function addDvd(int $id, int $movieId) : void {
             global $dvdDAO;
             $dvdDAO->createDvd($id, $movieId);
+        }
+        public function deleteMovie(int $id) : void {
+            global $movieDAO;
+            $movieDAO->deleteById($id);
+        }
+        public function deleteDvd(int $id) : void {
+            global $dvdDAO;
+            $dvdDAO->deleteById($id);
         }
     }

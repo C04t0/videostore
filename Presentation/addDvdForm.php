@@ -14,20 +14,20 @@
         <div id="wrapper" class="container">
             <h1>Add a new dvd</h1>
             <?php
-                if (isset($_GET['error']) && ($_GET['error'] == 'dvdIdExists')) {
+                if (isset($_GET['error']) && ($_GET['error'] == "dvdIdExists")) {
                     ?>
                     <p class="error">A dvd with this id already exists!</p>
                     <?php
                 }
             ?>
             <?php
-                if (isset($_GET['success']) && ($_GET['success'] == 'true')) {
+                if (isset($_GET['success']) && ($_GET['success'] == "true")) {
                     ?>
                     <p class="success">Dvd successfully added!</p>
                     <?php
                 }
             ?>
-            <form method="post" action="/addDvd.php?action=process">
+            <form method="post" action="../addDvd.php?action=process">
                 <table>
                     <tr>
                         <td>Select a movie title: </td>

@@ -42,7 +42,6 @@
                 return null;
             } else {
                 return Movie::create((int)$row['id'], $row['title']);
-
             }
         }
         public function getByTitle(string $title) : ?Movie {
@@ -73,6 +72,17 @@
 
             $statement = $dbh->prepare($sql);
             $statement->bindParam(':title', $title);
+            $statement->execute();
+
+            $dbh = null;
+        }
+        public function deleteById(int $id) : void {
+            global $dbConn;
+            $sql = 'delete from movies WHERE id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
 
             $dbh = null;
