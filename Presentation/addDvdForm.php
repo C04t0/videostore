@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Video Store</title>
         <link rel="icon" href="img/icon.png">
-        <style><?php require_once "css/style.css"?></style>
+        <style><?php include "css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
@@ -53,6 +53,9 @@
                     </tr>
                 </table>
             </form>
+            <footer>
+                <button onclick="location.href='movies.php'">Return to main menu</button>
+            </footer>
         </div>
     </body>
 </html>

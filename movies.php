@@ -29,10 +29,11 @@
             case 'deleteDvd':
                 header("Location: deleteDvd.php");
                 break;
-            case 'returnDvd':
             case 'rentDvd':
-                header("Location: rentReturnDvd.php");
+                header("Location: rentDvd.php");
                 break;
+            case 'returnDvd':
+                header("Location: returnDvd.php");
         }
     } else {
         include "Presentation/home.php";

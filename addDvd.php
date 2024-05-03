@@ -9,6 +9,7 @@
     $error = null;
     $success = false;
     $movieService = new MovieService();
+    $movieList = $movieService->getAllMovies();
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
         try {
@@ -23,6 +24,5 @@
             exit(0);
         }
     } else {
-        $movieList = $movieService->getAllMovies();
         include "Presentation/addDvdForm.php";
     }

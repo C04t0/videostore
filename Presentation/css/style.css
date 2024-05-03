@@ -1,6 +1,6 @@
 /* ** DEBUG & DEVELOP ** */
 
-div, section, article, nav, img, header, footer, ul, li {
+div, section, article, nav, p, header, footer, form, table, ul, li {
     outline: 1px dashed red;
 }
 
@@ -16,6 +16,10 @@ html {
 }
 
 /* ** COLOURS ** */
+html {
+    background-image: url(Presentation/img/red-curtains.jpg);
+    background-repeat: no-repeat;
+}
 body {
     color: whitesmoke;
     background-color: black;
@@ -27,5 +31,27 @@ body {
 .success {
     color: green;
 }
-
+.btnImg {
+    filter: invert(1);
+}
+.menuBtn {
+    color: whitesmoke;
+    background-color: black;
+}
 /* ** STRUCTURE ** */
+
+#wrapper {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+#btnSpan>p {
+    display: inline-flex;
+}
+form {
+    width: 80%;
+    margin: auto;
+}
+table {
+    margin: auto;
+}

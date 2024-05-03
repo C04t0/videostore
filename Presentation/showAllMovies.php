@@ -13,8 +13,8 @@
     </head>
     <body>
         <div id="wrapper" class="container">
-            <h1>All movies</h1>
             <table>
+                <caption>Movie Overview</caption>
                 <tr>
                     <th>Title</th>
                     <th>Dvd numbers</th>
@@ -49,6 +49,9 @@
                 }
                 ?>
             </table>
+            <footer>
+                <button onclick="location.href='../movies.php'">Return to main menu</button>
+            </footer>
         </div>
     </body>
 </html>

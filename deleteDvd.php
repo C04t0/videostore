@@ -4,13 +4,14 @@
 
     use Business\MovieService;
 
+    $success = false;
     $movieService = new MovieService();
     $dvdList = $movieService->getAllDvds();
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
-        $dvd = $movieService->getDvd((int)$_POST['idSelect']);
-        $movieList = $movieService->getMovie($dvd->getMovieId());
-        include "Presentation/showAllMovies.php";
+        $success = $movieService->deleteDvd((int)$_POST['idSelect']);
+        include "Presentation/deleteDvdForm.php";
+        exit(0);
     } else {
-        include "Presentation/findDvdForm.php";
+        include "Presentation/deleteDvdForm.php";
     }

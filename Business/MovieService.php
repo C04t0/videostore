@@ -25,6 +25,10 @@
             global $movieDAO;
             return $movieDAO->getById($id);
         }
+        public function getMovieByTitle(string $title) : ?Movie {
+            global $movieDAO;
+            return $movieDAO->getByTitle($title);
+        }
         public function getDvd(int $id) : ?Dvd {
             global $dvdDAO;
             return $dvdDAO->getById($id);
@@ -37,13 +41,13 @@
             global $dvdDAO;
             return $dvdDAO->createDvd($id, $movieId);
         }
-        public function deleteMovie(int $id) : void {
+        public function deleteMovie(string $title) : bool {
             global $movieDAO;
-            $movieDAO->deleteById($id);
+            return $movieDAO->deleteMovieByTitle($title);
         }
-        public function deleteDvd(int $id) : void {
+        public function deleteDvd(int $id) : bool {
             global $dvdDAO;
-            $dvdDAO->deleteById($id);
+            return $dvdDAO->deleteById($id);
         }
         public function rentDvd($id) {
             global $dvdDAO;
