@@ -62,6 +62,29 @@
 
             return true;
         }
+        public function getByMovieId(int $id) : ?array {
+            if (is_null($this->getById($id))) {
+                throw new DvdNotFoundException();
+            }
+            global $dbConn;
+            $list = array();
+            $sql = 'select id, movie_id, rented from dvds where movie_id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($result as $row) {
+                $dvd = Dvd::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
+                $list[] = $dvd;
+            }
+            $dbh = null;
+
+            return $list;
+        }
         public function deleteById(int $id) : bool {
             if (is_null($this->getById($id))) {
                 throw new DvdNotFoundException();
@@ -78,7 +101,7 @@
 
             return true;
         }
-        public function rentDvd(int $id) : void {
+        public function rentDvd(int $id) : bool {
             global $dbConn;
             $sql = 'update dvds set rented = true where id = :id';
             $dbh = $dbConn->connect();
@@ -88,8 +111,10 @@
             $statement->execute();
 
             $dbh = null;
+
+            return true;
         }
-        public function returnDvd(int $id) : void {
+        public function returnDvd(int $id) : bool {
             global $dbConn;
             $sql = 'update dvds set rented = false where id = :id';
             $dbh = $dbConn->connect();
@@ -99,5 +124,7 @@
             $statement->execute();
 
             $dbh = null;
+
+            return true;
         }
     }

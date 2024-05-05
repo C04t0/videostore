@@ -3,13 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
-        <style><?php include "css/style.css"?></style>
+        <link rel="icon" href="../Presentation/img/icon.png">
+        <style><?php include "Presentation/css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
             <h1>Find a dvd</h1>
-                <form method="post" action="../findDvd.php?action=process">
+            <?php
+                if (!is_null($error)) {
+                    ?>
+                    <p class="error"> Dvd not found!</p>
+                    <?php
+                }
+            ?>
+                <form method="post" action="findDvd.php?action=process">
                     <table>
                         <tr>
                             <td>Select a dvd id</td>
@@ -17,6 +24,7 @@
                         <tr>
                             <td>
                                 <select id="dvdIdSelect" name="idSelect" required>
+                                    <option value="" hidden disabled selected>Choose dvd id</option>
                                     <?php
                                         foreach ($dvdList as $dvd) {
                                             ?>

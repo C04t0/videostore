@@ -1,10 +1,9 @@
 /* ** DEBUG & DEVELOP ** */
-
+/*
 div, section, article, nav, p, header, footer, form, table, ul, li {
     outline: 1px dashed red;
 }
-
-
+*/
 html, body, div, section, article, aside, nav, header, footer {
     margin: 0;
     padding: 0;
@@ -14,17 +13,25 @@ html, body, div, section, article, aside, nav, header, footer {
 html {
     font-family: Helvetica, sans-serif;
 }
+#wrapper>footer {
 
+}
 /* ** COLOURS ** */
 html {
-    background-image: url(Presentation/img/red-curtains.jpg);
+    background-image: url("/Presentation/img/red-curtains.jpg");
     background-repeat: no-repeat;
 }
 body {
     color: whitesmoke;
+    background-color: darkred;
+    background-image: url("Presentation/img/background-test-3.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#wrapper {
+    color: whitesmoke;
     background-color: black;
 }
-
 .error {
     color: red;
 }
@@ -37,6 +44,11 @@ body {
 .menuBtn {
     color: whitesmoke;
     background-color: black;
+    border: none;
+}
+#returnBtn {
+    outline-width: 2px;
+    outline-color: beige;
 }
 /* ** STRUCTURE ** */
 
@@ -54,4 +66,8 @@ form {
 }
 table {
     margin: auto;
+}
+#dvdOverview tr>td {
+    display: inline-flex;
+    flex-direction: row;
 }

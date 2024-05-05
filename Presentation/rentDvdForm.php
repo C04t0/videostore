@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
-        <style><?php include "css/style.css"?></style>
+        <link rel="icon" href="../Presentation/img/icon.png">
+        <style><?php include "Presentation/css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
@@ -29,9 +29,9 @@
                                         if ($dvd->getMovieId() == $movie->getId()) {
                                             if (!$dvd->isRented()) {
                                                 $available++;
-                                                echo "<b> " . $dvd->getId() . " </b>";
+                                                echo "<b style='color: green'> " . $dvd->getId() . " </b>";
                                             } else {
-                                                echo $dvd->getId() . " ";
+                                                echo "<b style='color:red'>" . $dvd->getId() . " </b>";
                                             }
                                         }
                                     }
@@ -50,20 +50,21 @@
             </section>
             <section>
                 <h2>Rent a dvd</h2>
-                <?php if ($success === "true") {
+                <?php if ($success === true) {
                     ?>
                     <p class="success">DVD has been successfully rented!</p>
                 <?php
                     }
                 ?>
-                <form method="post" action="../rentDvd.php?action=rent">
+                <form method="post" action="rentDvd.php?action=rent">
                     <select id="dvdRentSelect" name="dvdRentSelect">
-                        <option value="" selected>Choose dvd id</option>
+                        <option value="" hidden disabled selected>Choose dvd id</option>
                         <?php
                             foreach ($dvdRentList as $dvd) {
                                 ?>
                         <option value="<?php echo $dvd->getId(); ?>">
-                            <?php echo $dvd->getId();
+                            <?php
+                                    echo $dvd->getId();
                             ?>
                         </option>
                         <?php
@@ -74,7 +75,7 @@
                 </form>
             </section>
             <footer>
-                <button onclick="location.href='movies.php'">Return to main menu</button>
+                <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
             </footer>
         </div>
     </body>

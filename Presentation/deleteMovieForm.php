@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="../Presentation/img/icon.png">
         <style><?php include "css/style.css"?></style>
     </head>
     <body>
@@ -16,7 +16,7 @@
             <?php
                 }
             ?>
-            <form method="post" action="../deleteMovie.php?action=process">
+            <form method="post" action="deleteMovie.php?action=process">
                 <table>
                     <tr>
                         <td>Select a movie title</td>
@@ -42,9 +42,9 @@
                     </tr>
                 </table>
             </form>
-        </div>
         <footer>
-            <button onclick="location.href='movies.php'">Return to main menu</button>
+            <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
         </footer>
+        </div>
     </body>
 </html>

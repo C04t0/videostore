@@ -16,8 +16,8 @@
         }
     }
     if (isset($_GET['action']) && $_GET['action'] == 'rent') {
-        $movieService->rentDvd((int)$_POST['dvdRentSelect']);
-        $success = "true";
+        $success = $movieService->rentDvd((int)$_POST['dvdRentSelect']);
+        header("Refresh: 10, url=rentDvd.php");
         include "Presentation/rentDvdForm.php";
         /* header("Location: Presentation/rentDvdForm.php?success=rent"); */
         exit(0);

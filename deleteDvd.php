@@ -10,6 +10,7 @@
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
         $success = $movieService->deleteDvd((int)$_POST['idSelect']);
+        header("Refresh: 10, url=deleteDvd.php");
         include "Presentation/deleteDvdForm.php";
         exit(0);
     } else {

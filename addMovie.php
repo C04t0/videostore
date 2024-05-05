@@ -12,14 +12,16 @@
     if (isset($_GET['action']) && $_GET['action'] == 'process') {
         try {
             $success = $movieService->addMovie($_POST['title']);
+            header("Refresh: 10; url=addMovie.php");
             include "Presentation/addMovieForm.php";
             /* header("Location: /Presentation/addMovieForm.php?success=true"); */
-            exit(0);
+
         } catch (MovieExistsException $e) {
             $error = "movieExists";
+            header("Refresh: 10, url=addMovie.php");
             include "Presentation/addMovieForm.php";
             /* header('Location: /Presentation/addMovieForm.php?error=movieExists'); */
-            exit(0);
+
         }
     } else {
         $dvdList = $movieService->getAllDvds();

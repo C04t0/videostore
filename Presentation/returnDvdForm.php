@@ -3,21 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="../Presentation/img/icon.png">
         <style><?php include "css/style.css"?></style>
     </head>
-    <body>
-    <section>
+    <body><div id="wrapper" class="container">
+
         <h2>Return a dvd</h2>
-        <?php if ($success === "true") {
+        <?php if ($success) {
             ?>
             <p class="success">DVD has been successfully returned!</p>
             <?php
         }
         ?>
-        <form method="post" action="../returnDvd.php?action=return">
+        <form method="post" action="returnDvd.php?action=process">
             <select id="dvdReturnSelect" name="dvdReturnSelect">
-                <option value="" selected>Choose dvd id</option>
+                <option value="" hidden disabled selected>Choose dvd id</option>
                 <?php
                     foreach ($dvdReturnList as $dvd) {
                         ?>
@@ -30,9 +30,9 @@
             </select>
             <input type="submit" value="Return">
         </form>
-    </section>
-    <footer>
-        <button onclick="location.href='movies.php'">Return to main menu</button>
-    </footer>
+        <footer>
+            <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
+        </footer>
+    </div>
     </body>
 </html>

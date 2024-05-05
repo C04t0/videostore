@@ -31,9 +31,9 @@
                             if ($dvd->getMovieId() == $movie->getId()) {
                                 if (!$dvd->isRented()) {
                                     $available++;
-                                    echo "<b> " . $dvd->getId() . " </b>";
+                                    echo "<b style='color:green'> " . $dvd->getId() . " </b>";
                                 } else {
-                                    echo $dvd->getId();
+                                    echo $dvd->getId() . " ";
                                 }
                             }
                         }
@@ -50,7 +50,7 @@
                 ?>
             </table>
             <footer>
-                <button onclick="location.href='../movies.php'">Return to main menu</button>
+                <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
             </footer>
         </div>
     </body>

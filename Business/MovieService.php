@@ -42,19 +42,24 @@
             return $dvdDAO->createDvd($id, $movieId);
         }
         public function deleteMovie(string $title) : bool {
-            global $movieDAO;
-            return $movieDAO->deleteMovieByTitle($title);
+            global $dvdDAO;
+          global $movieDAO;
+          $movie = $movieDAO->getByTitle($title);
+          foreach ($dvdDAO->getByMovieId($movie->getId()) as $dvd) {
+              $dvdDAO->deleteById($dvd->getId());
+          }
+          return $movieDAO->deleteMovieByTitle($title);
         }
         public function deleteDvd(int $id) : bool {
             global $dvdDAO;
             return $dvdDAO->deleteById($id);
         }
-        public function rentDvd($id) {
+        public function rentDvd($id) : bool {
             global $dvdDAO;
-            $dvdDAO->rentDvd($id);
+            return $dvdDAO->rentDvd($id);
         }
-        public function returnDvd($id) {
+        public function returnDvd($id) : bool {
             global $dvdDAO;
-            $dvdDAO->returnDvd($id);
+            return $dvdDAO->returnDvd($id);
         }
     }

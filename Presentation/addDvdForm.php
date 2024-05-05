@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Video Store</title>
         <link rel="icon" href="img/icon.png">
-        <style><?php include "css/style.css"?></style>
+        <style><?php include "Presentation/css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
@@ -21,7 +21,24 @@
                     <?php
                 }
             ?>
-            <form method="post" action="../addDvd.php?action=process">
+            <table id="dvdOverview" class="overview">
+                <tr>
+                    <th>Dvd ID's already taken</th>
+                </tr>
+                <tr>
+                    <?php foreach ($dvdList as $dvd) {
+                        ?>
+                        <td>
+                            <?php
+                                echo $dvd->getId();
+                            ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
+                </tr>
+            </table>
+            <form method="post" action="addDvd.php?action=process">
                 <table>
                     <tr>
                         <td>Select a movie title: </td>
@@ -45,7 +62,7 @@
                         <td>Choose a new dvd id: </td>
                     </tr>
                     <tr>
-                        <td><input type="number" min="0" name="dvdId" required></td>
+                        <td><input type="number" min="1" name="dvdId" required></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -54,7 +71,7 @@
                 </table>
             </form>
             <footer>
-                <button onclick="location.href='movies.php'">Return to main menu</button>
+                <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
             </footer>
         </div>
     </body>
