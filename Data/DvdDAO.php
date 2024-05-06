@@ -21,7 +21,7 @@
             $result = $dbh->query($sql);
 
             foreach ($result as $row) {
-                $dvd = Dvd::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
+                $dvd = Dvd::create((int)$row['id'], (int)$row['movie_id'], (bool)$row['rented']);
                 $list[] = $dvd;
             }
             $dbh = null;
@@ -36,14 +36,11 @@
             $statement = $dbh->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
-            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $row = $statement->fetch();
+            $dvd =  DVD::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
             $dbh = null;
 
-            if (empty($row)) {
-                return null;
-            } else {
-                return DVD::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
-            }
+            return $dvd;
         }
         public function createDvd(int $id, int $movieId) : bool {
             if (!is_null($this->getById($id))) {
@@ -75,7 +72,7 @@
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
 
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetchAll();
 
             foreach ($result as $row) {
                 $dvd = Dvd::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);

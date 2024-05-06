@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Add movie title"></td>
+                        <td><input class="submitBtn" type="submit" value="Add movie title"></td>
                     </tr>
                 </table>
             </form>

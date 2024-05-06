@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Video Store</title>
         <link rel="icon" href="../Presentation/img/icon.png">
-        <style><?php include "Presentation/css/style.css"?></style>
+        <style><?php include "css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
@@ -39,12 +39,12 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Find dvd"</td>
+                            <td><input class="submitBtn" type="submit" value="Find dvd"</td>
                         </tr>
                     </table>
                 </form>
             <footer>
-                <button class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
+                <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
             </footer>
         </div>
     </body>

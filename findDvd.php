@@ -11,13 +11,13 @@
 
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
-        $dvd = $movieService->getDvd((int)$_POST['idSelect']);
-        if (is_null($dvd)) {
-            $error = "dvdNotFound";
-            include "Presentation/findDvdForm.php";
-        } else {
+        try {
+            $dvd = $movieService->getDvd((int)$_POST['idSelect']);
             $movieList = $movieService->getMovie($dvd->getMovieId());
             include "Presentation/showAllMovies.php";
+        } catch (DvdNotFoundException $e) {
+            $error = "dvdNotFound";
+            include "Presentation/findDvdForm.php";
         }
     } else {
         include "Presentation/findDvdForm.php";

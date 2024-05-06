@@ -79,6 +79,22 @@
 
             return true;
         }
+        public function deleteMovieById(int $id) : bool {
+            if (is_null($this->getById($id))) {
+                throw new MovieNotFoundException();
+            }
+            global $dbConn;
+            $sql = 'delete from movies where id = :id';
+            $dbh = $dbConn->connect();
+
+            $statement = $dbh->prepare($sql);
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+
+            $dbh = null;
+
+            return true;
+        }
         public function deleteMovieByTitle(string $title) : bool {
             if (is_null($this->getByTitle($title))) {
                 throw new MovieNotFoundException();

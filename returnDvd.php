@@ -14,7 +14,7 @@
     }
 
     if (isset($_GET['action']) && $_GET['action'] == 'process') {
-        $success = $movieService->returnDvd((int)$_POST['dvdReturnSelect']);
+        $success = $movieService->returnDvd((int)$_POST['dvdSelect']);
         header("Refresh: 10, url=returnDvd.php");
         include "Presentation/returnDvdForm.php";
         /* header("Location: Presentation/rentDvdForm.php?success=return"); */

@@ -62,7 +62,7 @@
                         <td>Choose a new dvd id: </td>
                     </tr>
                     <tr>
-                        <td><input type="number" min="1" name="dvdId" required></td>
+                        <td><input class="submitBtn" type="number" min="1" name="dvdId" required></td>
                     </tr>
                     <tr>
                         <td></td>

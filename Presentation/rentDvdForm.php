@@ -71,7 +71,7 @@
                             }
                         ?>
                     </select>
-                    <input type="submit" value="Rent">
+                    <input class="submitBtn" type="submit" value="Rent">
                 </form>
             </section>
             <footer>

@@ -64,7 +64,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Delete DVD"></td>
+                        <td><input class="submitBtn" type="submit" value="Delete DVD"></td>
                     </tr>
                 </table>
             </form>

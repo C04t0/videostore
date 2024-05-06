@@ -10,8 +10,27 @@ html, body, div, section, article, aside, nav, header, footer {
 }
 
 /* ** TYPOGRAPHICS ** */
+@font-face {
+    font-family: "CinemaBoard";
+    src: url("Presentation/fonts/CinemaBoard.ttf") format("truetype");
+}
+@font-face {
+    font-family: "CinemaGothic";
+    src: url("Presentation/fonts/CinemaGothic.ttf") format('truetype');
+}
 html {
-    font-family: Helvetica, sans-serif;
+    font-family: "CinemaGothic";
+}
+h1, caption {
+    font-family: "CinemaBoard";
+    font-size: 42px;
+}
+.menuBtn, .submitBtn {
+    font-family: "CinemaGothic";
+}
+#returnBtn {
+    font-family: "CinemaGothic";
+    font-size: 32px;
 }
 #wrapper>footer {
 
@@ -41,15 +60,12 @@ body {
 .btnImg {
     filter: invert(1);
 }
-.menuBtn {
+.menuBtn, .submitBtn {
     color: whitesmoke;
     background-color: black;
-    border: none;
 }
-#returnBtn {
-    outline-width: 2px;
-    outline-color: beige;
-}
+
+
 /* ** STRUCTURE ** */
 
 #wrapper {
@@ -63,11 +79,17 @@ body {
 form {
     width: 80%;
     margin: auto;
+    margin-top: 5%;
 }
 table {
     margin: auto;
+    margin-top: 10%;
+
 }
 #dvdOverview tr>td {
     display: inline-flex;
     flex-direction: row;
+}
+footer {
+    margin-top: 10%;
 }

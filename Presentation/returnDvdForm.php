@@ -16,7 +16,7 @@
         }
         ?>
         <form method="post" action="returnDvd.php?action=process">
-            <select id="dvdReturnSelect" name="dvdReturnSelect">
+            <select id="dvdReturnSelect" name="dvdSelect">
                 <option value="" hidden disabled selected>Choose dvd id</option>
                 <?php
                     foreach ($dvdReturnList as $dvd) {
@@ -28,7 +28,7 @@
                     }
                 ?>
             </select>
-            <input type="submit" value="Return">
+            <input class="submitBtn" type="submit" value="Return">
         </form>
         <footer>
             <button id="returnBtn" class="menuBtn" onclick="location.href='movies.php'">Return to main menu</button>
