@@ -8,7 +8,7 @@
     </head>
     <body><div id="wrapper" class="container">
 
-        <h2>Return a dvd</h2>
+        <h1>Return a dvd</h1>
         <?php if ($success) {
             ?>
             <p class="success">DVD has been successfully returned!</p>

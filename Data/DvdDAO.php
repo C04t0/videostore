@@ -36,23 +36,26 @@
             $statement = $dbh->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->execute();
-            $row = $statement->fetch();
-            $dvd =  DVD::create((int)$row["id"], (int)$row["movie_id"], (bool)$row["rented"]);
+
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+
             $dbh = null;
 
-            return $dvd;
+            if (empty($row)) {
+                return null;
+            } else {
+                return DVD::create((int)$row['id'], (int)$row['movie_id'], (bool)$row['rented']);
+            }
         }
         public function createDvd(int $id, int $movieId) : bool {
-            if (!is_null($this->getById($id))) {
-                throw new DvdExistsException();
-            }
             global $dbConn;
-            $sql = 'insert into dvds (id, movie_id, rented) values (:id, :movie_id, false)';
+            $rented = false;
+            $sql = 'insert into dvds (id, movie_id, rented) values (:id, :movie_id, :rented)';
             $dbh = $dbConn->connect();
-
             $statement = $dbh->prepare($sql);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
             $statement->bindParam(':movie_id', $movieId, PDO::PARAM_INT);
+            $statement->bindParam(':rented', $rented, PDO::PARAM_BOOL);
             $statement->execute();
 
             $dbh = null;
@@ -60,9 +63,6 @@
             return true;
         }
         public function getByMovieId(int $id) : ?array {
-            if (is_null($this->getById($id))) {
-                throw new DvdNotFoundException();
-            }
             global $dbConn;
             $list = array();
             $sql = 'select id, movie_id, rented from dvds where movie_id = :id';

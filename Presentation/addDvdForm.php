@@ -15,6 +15,11 @@
                     <p class="error">A dvd with this id already exists!</p>
                     <?php
                 }
+                if ($error === "dvdMovieIdInvalid") {
+                    ?>
+                    <p class="error">Something went wrong! Either dvd id already exists or movie title - dvd id combo is invalid.</p>
+                    <?php
+                }
                 if ($success) {
                     ?>
                     <p class="success">Dvd successfully added!</p>
@@ -62,11 +67,11 @@
                         <td>Choose a new dvd id: </td>
                     </tr>
                     <tr>
-                        <td><input class="submitBtn" type="number" min="1" name="dvdId" required></td>
+                        <td><input type="number" min="1" name="dvdId" required></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Add dvd"></td>
+                        <td><input class="submitBtn" type="submit" value="Add dvd"></td>
                     </tr>
                 </table>
             </form>

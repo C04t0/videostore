@@ -24,7 +24,6 @@
                     <?php foreach ($dvdList as $dvd) {
                         ?>
                         <td>
-
                             <?php
                                 if ($dvd->isRented()) {
                                     echo "<b style='color: red'>" . $dvd->getId() . "</b>";

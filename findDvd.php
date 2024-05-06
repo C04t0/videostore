@@ -6,15 +6,21 @@
     use Exceptions\DvdNotFoundException;
 
     $error = null;
+    $success = null;
     $movieService = new MovieService();
     $dvdList = $movieService->getAllDvds();
 
 
     if (isset($_GET['action']) && $_GET['action'] == "process") {
         try {
-            $dvd = $movieService->getDvd((int)$_POST['idSelect']);
-            $movieList = $movieService->getMovie($dvd->getMovieId());
-            include "Presentation/showAllMovies.php";
+            $dvdSelect = $movieService->getDvd((int)$_POST['idSelect']);
+            $movieList = $movieService->getMovie($dvdSelect->getMovieId());
+            $success = true;
+            if (is_null($movieList)) {
+                $success = false;
+                $error = "invalidId";
+            }
+            include "Presentation/findDvdForm.php";
         } catch (DvdNotFoundException $e) {
             $error = "dvdNotFound";
             include "Presentation/findDvdForm.php";

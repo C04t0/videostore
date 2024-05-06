@@ -39,11 +39,12 @@ h1, caption {
 html {
     background-image: url("/Presentation/img/red-curtains.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 body {
     color: whitesmoke;
     background-color: darkred;
-    background-image: url("Presentation/img/background-test-3.jpeg");
+    background-image: url("Presentation/img/red-curtains.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -69,7 +70,7 @@ body {
 /* ** STRUCTURE ** */
 
 #wrapper {
-    width: 80%;
+    width: 60%;
     margin: auto;
     text-align: center;
 }
@@ -89,6 +90,7 @@ table {
 #dvdOverview tr>td {
     display: inline-flex;
     flex-direction: row;
+    margin-left:2%;
 }
 footer {
     margin-top: 10%;

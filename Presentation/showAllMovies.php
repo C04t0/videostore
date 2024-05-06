@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="wrapper" class="container">
-            <table>
+            <table id="movieOverview" class="overview">
                 <caption>Movie Overview</caption>
                 <tr>
                     <th>Title</th>
@@ -31,9 +31,9 @@
                             if ($dvd->getMovieId() == $movie->getId()) {
                                 if (!$dvd->isRented()) {
                                     $available++;
-                                    echo "<b style='color:green'> " . $dvd->getId() . " </b>";
+                                    echo "<b style='color:green'>  " . $dvd->getId() . "  </b>";
                                 } else {
-                                    echo $dvd->getId() . " ";
+                                    echo $dvd->getId() . "  ";
                                 }
                             }
                         }
