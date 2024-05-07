@@ -17,8 +17,9 @@
             }
             ?>
             <table id="dvdOverview" class="overview">
+                <caption>DVD OVERVIEW</caption>
                 <tr>
-                    <th>DVD Overview</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <?php foreach ($dvdList as $dvd) {

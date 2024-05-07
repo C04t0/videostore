@@ -27,6 +27,7 @@
                 }
             ?>
             <table id="dvdOverview" class="overview">
+                <caption>DVD OVERVIEW</caption>
                 <tr>
                     <th>Dvd ID's already taken</th>
                 </tr>
@@ -71,7 +72,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input class="submitBtn" type="submit" value="Add dvd"></td>
+                        <td><input class="submitBtn" type="submit" value="Add DVD"></td>
                     </tr>
                 </table>
             </form>

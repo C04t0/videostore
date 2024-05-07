@@ -11,7 +11,7 @@
         <div id="wrapper" class="container">
             <h1>Rent a dvd</h1>
             <section>
-                <table>
+                <table id="movieOverview" class="overview">
                     <caption>Movie Overview</caption>
                     <tr>
                         <th>Title</th>
