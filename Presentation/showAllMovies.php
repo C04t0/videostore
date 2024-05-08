@@ -1,5 +1,6 @@
 <?php
     declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
         <meta charset="UTF-8">
         <title>Movies</title>
         <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="../Presentation/img/icon.png">
         <style><?php require_once "css/style.css"?></style> <!-- avoid mime-type error -->
     </head>
     <body>
@@ -20,33 +21,8 @@
                     <th>Dvd numbers</th>
                     <th>Available</th>
                 </tr>
-                <?php foreach ($movieList as $movie) {
-                    $available = 0;
-                   ?>
-                <tr>
-                    <td><?php echo $movie->getTitle()?></td>
-                    <td>
-                    <?php
-                        foreach ($dvdList as $dvd) {
-                            if ($dvd->getMovieId() == $movie->getId()) {
-                                if (!$dvd->isRented()) {
-                                    $available++;
-                                    echo "<b style='color:green'>  " . $dvd->getId() . "  </b>";
-                                } else {
-                                    echo $dvd->getId() . "  ";
-                                }
-                            }
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                            echo $available;
-                        ?>
-                    </td>
-                </tr>
                 <?php
-                }
+                    echo generateMovieOverview($movieList, $dvdList);
                 ?>
             </table>
             <footer>

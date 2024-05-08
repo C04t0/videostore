@@ -1,3 +1,8 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -18,58 +23,18 @@
                         <th>Dvd numbers</th>
                         <th>Available</th>
                     </tr>
-                    <?php foreach ($movieList as $movie) {
-                        $available = 0;
-                        ?>
-                        <tr>
-                            <td><?php echo $movie->getTitle()?></td>
-                            <td>
-                                <?php
-                                    foreach ($dvdList as $dvd) {
-                                        if ($dvd->getMovieId() == $movie->getId()) {
-                                            if (!$dvd->isRented()) {
-                                                $available++;
-                                                echo "<b style='color: green'> " . $dvd->getId() . " </b>";
-                                            } else {
-                                                echo "<b style='color:red'>" . $dvd->getId() . " </b>";
-                                            }
-                                        }
-                                    }
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                    echo $available;
-                                ?>
-                            </td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
+                    <tr>
+                        <?php echo generateMovieOverview($movieList, $dvdList)?>
+                    </tr>
                 </table>
             </section>
             <section>
                 <h2>Rent a dvd</h2>
-                <?php if ($success === true) {
-                    ?>
-                    <p class="success">DVD has been successfully rented!</p>
-                <?php
-                    }
-                ?>
+                <?php echo generateDvdRentSuccess($success); ?>
                 <form method="post" action="rentDvd.php?action=rent">
                     <select id="dvdRentSelect" name="dvdRentSelect">
                         <option value="" hidden disabled selected>Choose dvd id</option>
-                        <?php
-                            foreach ($dvdRentList as $dvd) {
-                                ?>
-                        <option value="<?php echo $dvd->getId(); ?>">
-                            <?php
-                                    echo $dvd->getId();
-                            ?>
-                        </option>
-                        <?php
-                            }
-                        ?>
+                        <?php echo generateDvdSelect($dvdRentList); ?>
                     </select>
                     <input class="submitBtn" type="submit" value="Rent">
                 </form>

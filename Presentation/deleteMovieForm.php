@@ -1,3 +1,9 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,14 +15,7 @@
     <body>
         <div id="wrapper" class="container">
         <h1>Delete a movie</h1>
-            <?php
-                if ($error === "dvdnotFound") {
-                    echo "<p class='error'>Something went wrong, DVD id not found </p>";
-                }
-                if ($success) {
-                    echo "<p class='success'>Movie title has been successfully deleted!</p>";
-                }
-            ?>
+            <?php echo generateMovieDeleteErrorSuccess($error, $success); ?>
             <form method="post" action="deleteMovie.php?action=process">
                 <table>
                     <tr>
@@ -25,15 +24,7 @@
                     <tr>
                         <td>
                             <select id="movieTitleSelect" name="titleSelect" required>
-                            <?php
-                            foreach ($movieList as $movie) {
-                                ?>
-                                <option value="<?php echo $movie->getId(); ?>">
-                                    <?php echo $movie->getTitle(); ?>
-                                </option>
-                            <?php
-                                }
-                            ?>
+                                <?php echo generateMovieSelect($movieList); ?>
                             </select>
                         </td>
                     </tr>

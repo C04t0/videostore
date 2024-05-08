@@ -37,7 +37,7 @@ h1, caption {
 }
 /* ** COLOURS ** */
 html {
-    background-image: url("/Presentation/img/red-curtains.jpg");
+    background-image: url("Presentation/img/red-curtains.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -52,12 +52,13 @@ body {
     color: whitesmoke;
     background-color: black;
 }
-.error {
+.error, .unavailable {
     color: red;
 }
-.success {
+.success, .available {
     color: green;
 }
+
 .btnImg {
     filter: invert(1);
 }
@@ -83,6 +84,12 @@ body {
 form {
     width: 80%;
     margin: 5% auto auto;
+}
+.dvdId {
+    margin-left: 3%;
+}
+.overview, caption {
+    min-width: 80%;
 }
 table {
     margin: 10% auto auto;

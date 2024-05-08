@@ -1,3 +1,8 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,18 +14,7 @@
     <body>
         <div id="wrapper" class="container">
             <h1>Add a new movie title</h1>
-            <?php
-                if ($error === "movieExists") {
-                    ?>
-            <p class="error">Title already exists!</p>
-            <?php
-                }
-                if ($success) {
-            ?>
-            <p class="success">Movie title successfully added!</p>
-            <?php
-                }
-            ?>
+            <?php echo generateMovieErrorSuccess($error, $success); ?>
             <form method="post" action="addMovie.php?action=process">
                 <table>
                     <tr>

@@ -1,42 +1,29 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="../Presentation/img/icon.png">
         <style><?php include "Presentation/css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
             <h1>Delete a dvd</h1>
-            <?php
-                if ($success) {
-            ?>
-            <p class="success">Dvd has been successfully deleted!</p>
-            <?php
-            }
-            ?>
+            <?php echo generateDvdDeleteSuccess($success)?>
             <table id="dvdOverview" class="overview">
                 <caption>DVD OVERVIEW</caption>
                 <tr>
                     <th></th>
                 </tr>
                 <tr>
-                    <?php foreach ($dvdList as $dvd) {
-                        ?>
-                        <td>
-                            <?php
-                                if ($dvd->isRented()) {
-                                    echo "<b style='color: red'>" . $dvd->getId() . "</b>";
-                                } else {
-                                    echo $dvd->getId();
-                                }
-
-                            ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
+                    <?php echo generateDvdOverviewAvailableShown($dvdList); ?>
                 </tr>
             </table>
             <form method="post" action="deleteDvd.php?action=process">
@@ -48,17 +35,7 @@
                         <td>
                             <select id="dvdIdSelect" name="idSelect" required>
                                 <option value="" hidden disabled selected>Choose dvd id</option>
-                                <?php
-                                    foreach ($dvdList as $dvd) {
-                                        if (!$dvd->isRented()) {
-                                        ?>
-                                        <option value="<?php echo $dvd->getId(); ?>">
-                                            <?php echo $dvd->getId(); ?>
-                                        </option>
-                                        <?php
-                                        }
-                                    }
-                                ?>
+                                <?php echo generateDvdSelectAvailable($dvdList);?>
                             </select>
                         </td>
                     </tr>

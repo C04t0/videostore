@@ -1,47 +1,29 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Video Store</title>
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="../Presentation/img/icon.png">
         <style><?php include "Presentation/css/style.css"?></style>
     </head>
     <body>
         <div id="wrapper" class="container">
             <h1>Add a new dvd</h1>
-            <?php
-                if ($error === "dvdIdExists") {
-                    ?>
-                    <p class="error">A dvd with this id already exists!</p>
-                    <?php
-                }
-                if ($error === "dvdMovieIdInvalid") {
-                    ?>
-                    <p class="error">Something went wrong! Either dvd id already exists or movie title - dvd id combo is invalid.</p>
-                    <?php
-                }
-                if ($success) {
-                    ?>
-                    <p class="success">Dvd successfully added!</p>
-                    <?php
-                }
-            ?>
+            <?php echo generateDvdErrorSuccess($error, $success); ?>
             <table id="dvdOverview" class="overview">
                 <caption>DVD OVERVIEW</caption>
                 <tr>
                     <th>Dvd ID's already taken</th>
                 </tr>
                 <tr>
-                    <?php foreach ($dvdList as $dvd) {
-                        ?>
-                        <td>
-                            <?php
-                                echo $dvd->getId();
-                            ?>
-                        </td>
-                        <?php
-                    }
-                    ?>
+                    <?php echo generateDvdOverview($dvdList); ?>
                 </tr>
             </table>
             <form method="post" action="addDvd.php?action=process">
@@ -52,15 +34,7 @@
                     <tr>
                         <td>
                             <select id="movieSelect" name="movieId" required>
-                                <?php
-                                    foreach ($movieList as $movie) {
-                                        ?>
-                                        <option value="<?php echo $movie->getId(); ?>">
-                                            <?php echo $movie->getTitle(); ?>
-                                        </option>
-                                        <?php
-                                    }
-                                ?>
+                                <?php echo generateMovieSelect($movieList); ?>
                             </select>
                         </td>
                     </tr>

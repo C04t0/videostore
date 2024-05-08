@@ -1,3 +1,9 @@
+<?php
+    declare(strict_types=1);
+    require_once 'Presentation/scripts/generateOverview.php';
+    require_once 'Presentation/scripts/generateErrorSuccess.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,24 +15,11 @@
     <body><div id="wrapper" class="container">
 
         <h1>Return a dvd</h1>
-        <?php if ($success) {
-            ?>
-            <p class="success">DVD has been successfully returned!</p>
-            <?php
-        }
-        ?>
+        <?php echo generateDvdReturnSuccess($success); ?>
         <form method="post" action="returnDvd.php?action=process">
             <select id="dvdReturnSelect" name="dvdSelect">
                 <option value="" hidden disabled selected>Choose dvd id</option>
-                <?php
-                    foreach ($dvdReturnList as $dvd) {
-                        ?>
-                        <option value="<?php echo $dvd->getId(); ?>">
-                            <?php echo $dvd->getId(); ?>
-                        </option>
-                        <?php
-                    }
-                ?>
+                <?php echo generateDvdSelect($dvdReturnList); ?>
             </select>
             <input class="submitBtn" type="submit" value="Return">
         </form>
