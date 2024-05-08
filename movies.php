@@ -15,25 +15,29 @@
                 include "Presentation/showAllMovies.php";
                 break;
             case 'findDvd':
-                header("Location: findDvd.php");
+                include "findDvd.php";
                 break;
             case 'addMovie':
-                header("Location: addMovie.php");
+                include "addMovie.php";
                 break;
             case 'addDvd':
-                header("Location: addDvd.php");
+                include "addDvd.php";
                 break;
             case 'deleteMovie':
-                header("Location: deleteMovie.php");
+                include "deleteMovie.php";
                 break;
             case 'deleteDvd':
-                header("Location: deleteDvd.php");
+                include "deleteDvd.php";
                 break;
             case 'rentDvd':
-                header("Location: rentDvd.php");
+                include "rentDvd.php";
                 break;
             case 'returnDvd':
-                header("Location: returnDvd.php");
+                include "returnDvd.php";
+                break;
+            default:
+                include "Presentation/home.php";
+                break;
         }
     } else {
         include "Presentation/home.php";
